@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let obj1=new Object ();
+    obj1.name="tr";
+    obj1.age=19;
+    obj1.male="male"
+    console.log(obj1);
+
+
+    let obj2={
+        name:"tr",
+        age:19,
+        gender:"male"
+    };
+    console.log(obj2);
+
+
+    function person(){
+        this.name="tr";
+        this.age=19;
+        this.geder="male";
+    }
+    let obj3=new person();
+    console.log(obj3);
+</script>
+<body>
+    
+</body>
+</html>

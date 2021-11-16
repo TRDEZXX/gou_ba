@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        // 1
+        let obj={name:"tr",age:19,gender:"male"};
+        function copy(insertobj){
+            insertobj=Object.assign({} ,obj);
+            return insertobj;
+        };
+        let obj1=copy(obj)
+        let obj2=copy(obj)
+        let obj3=copy(obj)
+        let arr1 = []
+        arr1.push(obj1,obj2,obj3);
+        console.table(arr1);
+
+        // 2
+        function person(){
+        this.name="tr";
+        this.gender="male";
+        this.age=19;
+        }
+        let person1=new person;
+        let person2=new person;
+        let person3=new person;
+        let arr2=[];
+        arr2.push(person1,person2,person3)
+        console.table(arr2)
+    </script>
+<body>
+    
+</body>
+</html>
