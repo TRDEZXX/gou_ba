@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 445px;
+            height: 32px;
+            resize: none;
+        }
+        input {
+            position: relative;
+            bottom: 14px;
+            right: 5px;
+            width: 52px;
+            height: 38px;
+            background-color: pink;
+        }
+        div {
+            border: 1px solid black;
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul></ul>
+    </div>
+    <textarea name="" id="" cols="30" rows="10" ></textarea>
+    <input type="button" value="留言" onclick="cli()">
+    <script>
+        let btn=document.querySelector("input");
+        let text=document.querySelector("textarea")
+        let ul=document.querySelector("ul")
+        function cli(){
+            let li=text.value;
+            ul.appendChild("li")
+        }
+    </script>
+</body>
+</html>
+<!-- 还未完成 -->
