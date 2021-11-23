@@ -21,9 +21,9 @@
         <input type="checkbox" value="拼命内卷">拼命内卷
         <input type="checkbox" value="使劲内卷">使劲内卷
         <br />
-        <input type="button" value="全选" onclick="qx()">
-        <input type="button" value="全不选" onclick="qbx()">
-        <input type="button" value="反选" onclick="fx()">
+        <input type="button" value="全选">
+        <input type="button" value="全不选">
+        <input type="button" value="反选">
     </div>
     <script>
         let inputs=document.getElementsByTagName("input");
@@ -31,23 +31,24 @@
         for (i=0;i<arr.length;i++) {
             arr[i].checked=false;
         }
-        function qx(){
+        inputs[4].addEventListener('click',function(){
             for (i=0;i<arr.length;i++)
             arr[i].checked=true;
-        }
-        function qbx(){
-            for (i=0;i<arr.length;i++)
-            arr[i].checked=false;
-        }
-        function fx(){
+        })
+        inputs[5].addEventListener('click',function(){
+            for ( i = 0; i < arr.length; i++) {
+                arr[i].checked=false;
+            }
+        })
+        inputs[6].addEventListener('click',function(){
             for (i=0;i<arr.length;i++){
                 if (arr[i].checked==true){
-                    arr[i].checked=false;
+                    arr[i].checked = !arr[i].checked;
                 } else if (arr[i].checked==false){
-                    arr[i].checked=true;
+                    arr[i].checked = !arr[i].checked;
                 }
             }
-        }
+        })
     </script>
 </body>
 

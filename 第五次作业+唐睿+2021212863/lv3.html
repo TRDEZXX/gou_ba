@@ -24,6 +24,10 @@
             width: 500px;
             height: 500px;
         }
+        li button {
+            float: right;
+            height: 20.8px;
+        }
     </style>
 </head>
 <body>
@@ -31,15 +35,21 @@
         <ul></ul>
     </div>
     <textarea name="" id="" cols="30" rows="10" ></textarea>
-    <input type="button" value="留言" onclick="cli()">
+    <input type="button" value="留言">
     <script>
         let btn=document.querySelector("input");
-        let text=document.querySelector("textarea")
-        let ul=document.querySelector("ul")
-        function cli(){
-            let li=text.value;
-            ul.appendChild("li")
-        }
+        let text=document.querySelector("textarea");
+        let ull=document.querySelector("ul");
+        btn.addEventListener('click',function (){
+            let li=document.createElement('li')
+                 if (text.value==""){
+                     alert('你还没输入任何内容')
+                 } else {
+                     li.innerHTML=text.value+'<button>删除</button>';
+                     ull.appendChild(li);
+                     text.value='';
+                 }
+        })
     </script>
 </body>
 </html>
