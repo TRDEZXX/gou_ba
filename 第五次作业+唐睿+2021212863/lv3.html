@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         textarea {
-            width: 445px;
+            width: 485px;
             height: 32px;
             resize: none;
         }
@@ -19,38 +19,83 @@
             height: 38px;
             background-color: pink;
         }
-        div {
+        .speak {
             border: 1px solid black;
             width: 500px;
             height: 500px;
+            margin-bottom: 0px;
         }
         li button {
             float: right;
             height: 20.8px;
         }
+        .selectColor {
+            list-style: none;
+            border-radius: 100%;
+            border: grey solid 0.5px;
+            width: 8px;
+            height: 8px;
+            float: left;
+            margin-right: 10px;
+            position: relative;
+            bottom: 29px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .selectColor:nth-child(1){
+           background-color: red; 
+        }
+        .selectColor:nth-child(2){
+           background-color: orange; 
+        }
+        .selectColor:nth-child(3){
+           background-color: greenyellow; 
+        }
+        .selectColor:nth-child(4){
+           background-color: yellow; 
+        }
+        .selectColor:nth-child(5){
+           background-color: skyblue; 
+        }
     </style>
 </head>
 <body>
-    <div>
-        <ul></ul>
-    </div>
-    <textarea name="" id="" cols="30" rows="10" ></textarea>
-    <input type="button" value="留言">
+    <ul class="speak"></ul>
+    <textarea cols="30" rows="10" ></textarea>
+    <input type="button" value="留言"><br>
+    <span>color:</span>
+    <ul>
+        <li class="selectColor"></li>
+        <li class="selectColor"></li>
+        <li class="selectColor"></li>
+        <li class="selectColor"></li>
+        <li class="selectColor"></li>
+    </ul>
     <script>
         let btn=document.querySelector("input");
         let text=document.querySelector("textarea");
-        let ull=document.querySelector("ul");
+        let ul=document.querySelector("ul");
+        const selectColor=document.getElementsByClassName('selectColor');
+        const removeBtn=document.getElementsByTagName('button');
+        function rm() {
+            for (i=0;i<removeBtn.length;i++){
+                removeBtn[i].addEventListener('click',function(){
+                ul.removeChild(this.parentNode);
+                })
+            }
+        }
         btn.addEventListener('click',function (){
             let li=document.createElement('li')
                  if (text.value==""){
                      alert('你还没输入任何内容')
                  } else {
                      li.innerHTML=text.value+'<button>删除</button>';
-                     ull.appendChild(li);
+                     ul.appendChild(li);
                      text.value='';
                  }
+                 rm();
         })
     </script>
 </body>
 </html>
-<!-- 还未完成 -->
+<!-- 颜色选择还未完成 -->

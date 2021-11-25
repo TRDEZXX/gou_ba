@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        .main {
+            width: 500px;
+            height: 300px;
+            list-style: none;
+            position: relative;
+            padding: 0px;
+        }
+        .items {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            text-align: center;
+        }
+        .items:nth-child(1){
+            background-color: pink;
+        }
+        .items:nth-child(2){
+            background-color: plum;
+        }
+        .items:nth-child(3){
+            background-color: purple;
+        }
+        .items:nth-child(4){
+            background-color: sandybrown;
+        }
+        .items:nth-child(5){
+            background-color: skyblue;
+        }
+        button{
+            height: 60px;
+            width: 30px;
+            z-index: 999;
+        }
+        #left {
+            position: absolute;
+            bottom: 125px;
+            opacity: .7;
+            border-width: 0px;
+        }
+        #right {
+            position: absolute;
+            bottom: 125px; 
+            right: 0px;
+            opacity: .7;
+            border-width: 0px;
+        }
+        #left:hover{
+            opacity: 0.9;
+        }
+        #right:hover{
+            opacity: 0.9;
+        }
+        .leftpicture {
+            width: 250px;
+            height: 150px;
+            left: -175px;
+            top: 25%;
+        }
+        .rightpicture {
+            width: 250px;
+            height: 150px;
+            right: -175px;
+            top: 25%;
+        }
+        .big {
+            z-index: 900;
+        }
+        .point {
+            list-style: none;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 8px;
+            height: 8px;
+            border: seashell solid 1px;
+            border-radius: 100%;
+            float: left;
+            margin-right: 15px;
+            z-index: 10000;
+            position: relative;
+            bottom: 50px;
+            left: 320px;
+            cursor: pointer;
+        }
+        .showPoint {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <ul class="main">
+        <li class="items">0</li>
+        <li class="items">1</li>
+        <li class="items">2</li>
+        <li class="items">3</li>
+        <li class="items">4</li>
+        <button id="left">&lt;</button>
+        <button id="right">&gt;</button>
+    </ul>
+    <ul>
+        <li class="point" data-i="0"></li>
+        <li class="point" data-i="1"></li>
+        <li class="point" data-i="2"></li>
+        <li class="point" data-i="3"></li>
+        <li class="point" data-i="4"></li>
+    </ul>
+    </div>
+    <script>
+        let lis = document.getElementsByClassName('items');
+        let rightBtn=document.getElementById('right');
+        let leftBtn=document.getElementById('left');
+        const points=document.getElementsByClassName('point');
+        let i=0;
+
+        // 向右
+
+        function clearI(){
+            for (a = 0; a < lis.length; a++) {
+                lis[a].className='items';
+            }
+            for (a = 0; a < lis.length; a++) {
+                points[a].className='point';
+            }
+        }
+        function i0(){
+            clearI();
+            lis[0].className='items big';
+            lis[1].className='items rightpicture';
+            lis[4].className='items leftpicture';
+            points[0].className='point showPoint';
+        }
+        i0();
+        function show(){
+            clearI();
+            lis[i].className='items big';
+            lis[i+1].className='items rightpicture';
+            lis[i-1].className='items leftpicture';
+            points[i].className='point showPoint';
+        }
+        function goRightBtn() {
+            i=i+1;
+            if (i>0 && i<4) {
+                show();
+            }  else if (i==4) {
+                clearI();
+                lis[4].className='items big';
+                lis[0].className='items rightpicture';
+                lis[3].className='items leftpicture';
+                points[4].className='point showPoint';
+            } else {
+                i=0;
+                i0();
+            }
+        }
+        rightBtn.addEventListener('click',function(){
+            goRightBtn();
+        })
+
+        // 向左
+
+        function goLeftBtn() {
+            i=i-1;
+            if (i>0 && i<4) {
+                show();
+            } else if (i==0) {
+                i0();
+            }  else {
+                clearI();
+                i=4;
+                lis[4].className='items big';
+                lis[0].className='items rightpicture';
+                lis[3].className='items leftpicture';
+                points[4].className='point showPoint';
+
+            }
+        }
+        leftBtn.addEventListener('click',function(){
+            goLeftBtn();
+        })
+
+        // 点
+
+         for (a=0;a<points.length;a++) {
+             points[a].addEventListener('click',function(){
+                 let pointI=this.getAttribute('data-i');
+                 i=pointI-1;
+                 goRightBtn();
+             })
+         }
+
+    </script>
+</body>
+</html>
