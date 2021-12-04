@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+                li {
+            list-style: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            transition: all 1s;
+        }
+        li:nth-child(1) {
+            background-color: mediumturquoise;
+        }
+        li:nth-child(2) {
+            background-color: orange;
+        }
+        li:nth-child(3) {
+            background-color: gray;
+        }
+        .moveRight {
+            transform: translateX(200px);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        let lis = document.getElementsByTagName('li');
+        function yb(){
+            let p = new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    lis[0].classList.add('moveRight');
+                    resolve('成功');
+                },1000)
+            });
+            return p;
+        }
+        yb()
+        .then(
+            function(data){
+                setTimeout(function(){
+                    console.log(data);
+                    lis[1].classList.add('moveRight');
+                },1000);
+                return data;
+            })
+        .then(
+            function(data){
+                console.log(data);
+                setTimeout(function(){
+                    lis[2].classList.add('moveRight');
+                    // console.log(data);
+                },2000)
+            }
+        )
+    </script>
+</body>
+</html>

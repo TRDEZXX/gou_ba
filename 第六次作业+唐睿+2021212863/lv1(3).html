@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            transition: all 1s;
+        }
+        li:nth-child(1) {
+            background-color: mediumturquoise;
+        }
+        li:nth-child(2) {
+            background-color: orange;
+        }
+        li:nth-child(3) {
+            background-color: gray;
+        }
+        .moveRight {
+            transform: translateX(200px);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        let lis = document.getElementsByTagName('li');
+        let step = (time) => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve('成功');
+                }, time);
+            });
+        };
+        async function demo() {
+            let word1 = await step(1000);
+            lis[0].classList.add('moveRight');
+            let word2 = await step(1000);
+            lis[1].classList.add('moveRight');
+            let word3 = await step(1000);
+            lis[2].classList.add('moveRight');
+        }
+        demo();
+    </script>
+</body>
+</html>
